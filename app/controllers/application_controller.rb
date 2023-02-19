@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     
+  #sing in後のページの設定
   def after_sign_in_path_for(resource)
+    about_path #名前付きルート
+  end
+  
+  #sing out後のページの設定
+  def after_sign_out_path_for(resource)
     about_path
   end
 
