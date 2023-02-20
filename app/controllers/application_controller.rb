@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     
   #sing in後のページの設定
   def after_sign_in_path_for(resource)
-    about_path #名前付きルート
+    post_images_path #名前付きルート
   end
   
   #sing out後のページの設定
