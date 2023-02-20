@@ -3,6 +3,8 @@ class PostImage < ApplicationRecord
   
   # belongs_to は、PostImage モデルから user_id に関連付けられていて、User モデルを参照することができる。
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   
   # 画像が設定されない場合はapp/assets/imagesに格納されているno_image.jpgという画像をデフォルト画像としてActiveStorageに格納し、格納した画像を表示する。
