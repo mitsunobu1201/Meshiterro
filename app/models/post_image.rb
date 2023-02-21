@@ -6,6 +6,9 @@ class PostImage < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  #バリデーションの設定
+  validates :shop_name, presence: true
+  validates :image, presence: true
   
   # 画像が設定されない場合はapp/assets/imagesに格納されているno_image.jpgという画像をデフォルト画像としてActiveStorageに格納し、格納した画像を表示する。
   def get_image
@@ -15,5 +18,8 @@ class PostImage < ApplicationRecord
     end
     image
   end
-  
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end
